@@ -1,0 +1,12 @@
+server:
+  port: 6677
+spring:
+  application:
+    name: treasure-console
+treasure:
+  nginx:
+    serverName: www.qiqiang.online
+    listener: 443
+    location:
+      path: /resources
+      root: /home/ubuntu

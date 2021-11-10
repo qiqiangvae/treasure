@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>forest-parent</artifactId>
+        <groupId>online.qiqiang</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>treasure</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <description>用来管理自己资源的应用</description>
+    <modules>
+        <module>treasure-console</module>
+        <module>treasure-service</module>
+        <module>treasure-common</module>
+        <module>treasure-nginx-service</module>
+    </modules>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <treasure.version>1.0-SNAPSHOT</treasure.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>online.qiqiang</groupId>
+                <artifactId>treasure-common</artifactId>
+                <version>${treasure.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>online.qiqiang</groupId>
+                <artifactId>treasure-service</artifactId>
+                <version>${treasure.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>online.qiqiang</groupId>
+                <artifactId>treasure-nginx-service</artifactId>
+                <version>${treasure.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

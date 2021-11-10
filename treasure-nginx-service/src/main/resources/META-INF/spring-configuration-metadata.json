@@ -1,0 +1,37 @@
+{
+  "groups": [
+    {
+      "name": "treasure.nginx",
+      "type": "online.qiqiang.treasure.nginx.core.NginxProperties",
+      "sourceType": "online.qiqiang.treasure.nginx.core.NginxProperties"
+    },
+    {
+      "name": "treasure.nginx.location",
+      "type": "online.qiqiang.treasure.nginx.core.NginxProperties.Location",
+      "sourceType": "online.qiqiang.treasure.nginx.core.NginxProperties.Location"
+    }
+  ],
+  "properties": [
+    {
+      "name": "treasure.nginx.listener",
+      "type": "java.lang.Integer",
+      "defaultValue": 80,
+      "description": "监听端口."
+    },
+    {
+      "name": "treasure.nginx.serverName",
+      "type": "java.lang.String",
+      "description": "域名."
+    },
+    {
+      "name": "treasure.nginx.location.path",
+      "type": "java.lang.String",
+      "description": "请求路径."
+    },
+    {
+        "name": "treasure.nginx.location.root",
+        "type": "java.lang.String",
+        "description": "请求路径 root."
+      }
+  ]
+}
