@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "treasure.nginx")
 public class NginxProperties implements InitializingBean {
+    private String protocol;
     private Integer listener;
     private String serverName;
     private Location location;

@@ -21,5 +21,9 @@
             <groupId>online.qiqiang</groupId>
             <artifactId>forest-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>online.qiqiang</groupId>
+            <artifactId>forest-query</artifactId>
+        </dependency>
     </dependencies>
 </project>

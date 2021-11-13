@@ -3,10 +3,19 @@ server:
 spring:
   application:
     name: treasure-console
+  mvc:
+    static-path-pattern: /front-web
 treasure:
   nginx:
+    protocol: https
     serverName: www.qiqiang.online
     listener: 443
     location:
-      path: /resources
-      root: /home/ubuntu
+      path: /blog
+      root: /data/hexo
+forest:
+  log:
+    enable: true
+    package-path: online.qiqiang.treasure.console.controller
+    ignore-resp: context
+    ignore-text: '#忽略该字段#'

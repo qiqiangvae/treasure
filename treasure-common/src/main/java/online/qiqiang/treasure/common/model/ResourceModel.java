@@ -2,6 +2,7 @@ package online.qiqiang.treasure.common.model;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import online.qiqiang.treasure.common.enums.FileType;
 
 import java.io.Serializable;
 
@@ -15,7 +16,8 @@ import java.io.Serializable;
 public class ResourceModel implements Serializable {
     private String name;
     private String path;
-    private String type;
+    private FileType fileType;
     private String mediaType;
     private Long size;
+    private String accessUrl;
 }

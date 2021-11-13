@@ -22,7 +22,11 @@
       "name": "treasure.nginx.serverName",
       "type": "java.lang.String",
       "description": "域名."
-    },
+    },{
+        "name": "treasure.nginx.protocol",
+        "type": "java.lang.String",
+        "description": "协议."
+      },
     {
       "name": "treasure.nginx.location.path",
       "type": "java.lang.String",
