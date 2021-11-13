@@ -1,7 +1,6 @@
 package online.qiqiang.treasure.nginx.service;
 
 import lombok.RequiredArgsConstructor;
-import online.qiqiang.forest.common.utils.CommandUtils;
 import online.qiqiang.forest.query.page.ForestPage;
 import online.qiqiang.treasure.common.enums.FileType;
 import online.qiqiang.treasure.common.model.ResourceModel;
@@ -23,7 +22,7 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
-public class NginxResourceService implements ResourceService {
+public class NginxResourceServiceImpl implements ResourceService {
     private final NginxProperties nginxProperties;
 
     @Override
@@ -36,24 +35,26 @@ public class NginxResourceService implements ResourceService {
         if (StringUtils.isNotBlank(path)) {
             targetPath = PathUtils.join(targetPath, path);
         }
-        List<String> fileLists = CommandUtils.execute("ls -l " + targetPath);
         ForestPage<ResourceModel> forestPage = new ForestPage<>();
-        forestPage.setTotalSize((long) fileLists.size());
-        forestPage.setPageSize(requestVO.getPageSize());
-        forestPage.setPages((long) Math.ceil(forestPage.getTotalSize() / (forestPage.getPageSize() * 1d)));
-        List<ResourceModel> context = new ArrayList<>(fileLists.size() - 1);
-        for (int i = 1; i < fileLists.size() - 1; i++) {
+        File dir = new File(targetPath);
+        File[] files = dir.listFiles();
+        if (files == null) {
+            return forestPage;
+        }
+        forestPage.setTotalSize((long) files.length);
+        List<ResourceModel> context = new ArrayList<>();
+        for (File file : files) {
             ResourceModel resourceModel = new ResourceModel();
-            String[] info = fileLists.get(i).split("\\s+", 8);
-            resourceModel.setName(info[7]);
+            resourceModel.setName(file.getName());
+            resourceModel.setPath(file.getPath());
             resourceModel.setPath(targetPath);
+            resourceModel.setSize(file.length());
+            resourceModel.setFileType(FileType.fileType(file));
             String url = PathUtils.join(protocol + "://", serverName, location.getPath(), resourceModel.getName());
             resourceModel.setAccessUrl(url);
-            resourceModel.setSize(Long.parseLong(info[5]));
             context.add(resourceModel);
         }
         forestPage.setContext(context);
-        forestPage.setCurrentSize(context.size());
         return forestPage;
     }
 }

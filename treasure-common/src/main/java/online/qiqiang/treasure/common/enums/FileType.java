@@ -19,4 +19,15 @@ public enum FileType {
             return FileType.unknown;
         }
     }
+
+    public static FileType fileType(String info) {
+        if (info.startsWith("d")) {
+            return FileType.directory;
+        } else if (info.startsWith("-")) {
+            return FileType.file;
+        } else {
+            return FileType.unknown;
+        }
+    }
+
 }

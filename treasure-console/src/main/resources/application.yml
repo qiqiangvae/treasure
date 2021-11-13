@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: treasure-console
+  datasource:
+    url: jdbc:h2:mem:treasure
+    username: treasure
+    password: qiqiang
   mvc:
     static-path-pattern: /front-web
 treasure:
@@ -13,6 +17,18 @@ treasure:
     location:
       path: /blog
       root: /data/hexo
+  command:
+    work-dir: /data/hexo/blog
+    commands:
+      - id: 1
+        command: ls -l
+        work-dir: /data/hexo/blog
+      - id: 2
+        command: hexo g
+        work-dir: /data/hexo/blog
+      - id: 3
+        command: git pull
+        work-dir: /data/hexo/blog
 forest:
   log:
     enable: true

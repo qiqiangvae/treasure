@@ -9,40 +9,22 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>treasure-console</artifactId>
+    <artifactId>treasure-command-service</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <h2.version>1.4.200</h2.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>online.qiqiang</groupId>
-            <artifactId>forest-mvc</artifactId>
+            <artifactId>forest-framework</artifactId>
         </dependency>
         <dependency>
             <groupId>online.qiqiang</groupId>
-            <artifactId>treasure-nginx-service</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>online.qiqiang</groupId>
-            <artifactId>treasure-command-service</artifactId>
+            <artifactId>treasure-service</artifactId>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

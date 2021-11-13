@@ -1,0 +1,21 @@
+{
+  "groups": [
+    {
+      "name": "treasure.command",
+      "type": "online.qiqiang.treasure.command.core.CommandProperties",
+      "sourceType": "online.qiqiang.treasure.command.core.CommandProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "treasure.command.work-dir",
+      "type": "java.lang.String",
+      "description": "默认工作空间."
+    },
+    {
+      "name": "treasure.command.commands",
+      "type": "online.qiqiang.treasure.common.model.CommandModel",
+      "description": "快捷命令."
+    }
+  ]
+}

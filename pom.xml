@@ -19,6 +19,7 @@
         <module>treasure-service</module>
         <module>treasure-common</module>
         <module>treasure-nginx-service</module>
+        <module>treasure-command-service</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -41,6 +42,11 @@
             <dependency>
                 <groupId>online.qiqiang</groupId>
                 <artifactId>treasure-nginx-service</artifactId>
+                <version>${treasure.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>online.qiqiang</groupId>
+                <artifactId>treasure-command-service</artifactId>
                 <version>${treasure.version}</version>
             </dependency>
         </dependencies>
