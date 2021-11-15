@@ -2,10 +2,13 @@ package online.qiqiang.treasure.command.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import online.qiqiang.forest.common.exception.BusinessException;
+import online.qiqiang.forest.common.exception.ErrorCode;
 import online.qiqiang.forest.common.utils.CommandUtils;
 import online.qiqiang.treasure.command.core.CommandProperties;
 import online.qiqiang.treasure.common.model.CommandModel;
 import online.qiqiang.treasure.service.CommandService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -31,9 +34,12 @@ public class CommandServiceImpl implements CommandService, ApplicationContextAwa
     }
 
     @Override
-    public List<String> execute(Long id) {
+    public List<String> execute(Long id, String password) {
         CommandModel commandModel = commandModelMap.get(id);
         log.info("执行命令：{}，工作目录：{}", commandModel.getCommand(), commandModel.getWorkDir());
+        if (!commandModel.getOpen() && !StringUtils.equals(password, commandProperties.getPassword())) {
+            throw new BusinessException(40001, "密码错误");
+        }
         return CommandUtils.execute(commandModel.getCommand(), commandModel.getWorkDir());
     }
 

@@ -16,6 +16,11 @@
       "name": "treasure.command.commands",
       "type": "online.qiqiang.treasure.common.model.CommandModel",
       "description": "快捷命令."
+    },
+    {
+      "name": "treasure.command.password",
+      "type": "java.lang.String",
+      "description": "密码."
     }
   ]
 }

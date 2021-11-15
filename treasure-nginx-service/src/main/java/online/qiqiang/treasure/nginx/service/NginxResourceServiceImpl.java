@@ -1,6 +1,7 @@
 package online.qiqiang.treasure.nginx.service;
 
 import lombok.RequiredArgsConstructor;
+import online.qiqiang.forest.common.utils.DateConvertor;
 import online.qiqiang.forest.query.page.ForestPage;
 import online.qiqiang.treasure.common.enums.FileType;
 import online.qiqiang.treasure.common.model.ResourceModel;
@@ -9,11 +10,14 @@ import online.qiqiang.treasure.common.vo.request.ListResourceRequestVO;
 import online.qiqiang.treasure.nginx.core.NginxProperties;
 import online.qiqiang.treasure.service.ResourceService;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * nginx 文件服务器本质上是服务器本地文件
@@ -45,15 +49,20 @@ public class NginxResourceServiceImpl implements ResourceService {
         List<ResourceModel> context = new ArrayList<>();
         for (File file : files) {
             ResourceModel resourceModel = new ResourceModel();
+            if (StringUtils.startsWith(file.getName(), ".")) {
+                continue;
+            }
             resourceModel.setName(file.getName());
             resourceModel.setPath(file.getPath());
             resourceModel.setPath(targetPath);
             resourceModel.setSize(file.length());
+            resourceModel.setModifyTime(DateConvertor.localDateTimeFrom(file.lastModified()));
             resourceModel.setFileType(FileType.fileType(file));
             String url = PathUtils.join(protocol + "://", serverName, location.getPath(), resourceModel.getName());
             resourceModel.setAccessUrl(url);
             context.add(resourceModel);
         }
+        context = context.stream().sorted(Comparator.comparing(ResourceModel::getModifyTime)).collect(Collectors.toList());
         forestPage.setContext(context);
         return forestPage;
     }

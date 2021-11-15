@@ -10,5 +10,5 @@ import java.util.List;
 public interface CommandService {
     List<CommandModel> listCommand();
 
-    List<String> execute(Long id);
+    List<String> execute(Long id, String password);
 }

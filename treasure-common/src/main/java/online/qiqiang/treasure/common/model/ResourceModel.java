@@ -8,6 +8,7 @@ import online.qiqiang.treasure.common.enums.FileType;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * 资源模型
@@ -24,5 +25,5 @@ public class ResourceModel implements Serializable {
     private Long size;
     private String accessUrl;
     @JsonFormat(pattern = DateConvertor.Pattern.USUAL_DATE_TIME)
-    private LocalDate modifyTime;
+    private LocalDateTime modifyTime;
 }
