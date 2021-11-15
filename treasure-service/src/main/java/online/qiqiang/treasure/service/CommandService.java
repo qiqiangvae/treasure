@@ -1,6 +1,7 @@
 package online.qiqiang.treasure.service;
 
 import online.qiqiang.treasure.common.model.CommandModel;
+import online.qiqiang.treasure.common.vo.response.ExecuteCommandResponseVO;
 
 import java.util.List;
 
@@ -10,5 +11,5 @@ import java.util.List;
 public interface CommandService {
     List<CommandModel> listCommand();
 
-    List<String> execute(Long id, String password);
+    List<ExecuteCommandResponseVO> execute(Long id, String password);
 }

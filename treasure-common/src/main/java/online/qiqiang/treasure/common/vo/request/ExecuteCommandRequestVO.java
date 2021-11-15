@@ -7,6 +7,12 @@ import lombok.Data;
  */
 @Data
 public class ExecuteCommandRequestVO {
+    /**
+     * 命令id
+     */
     private Long id;
+    /**
+     * md5 编码过后的字符串
+     */
     private String password;
 }

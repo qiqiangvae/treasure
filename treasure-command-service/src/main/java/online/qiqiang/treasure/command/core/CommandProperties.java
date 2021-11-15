@@ -3,6 +3,7 @@ package online.qiqiang.treasure.command.core;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import online.qiqiang.forest.common.utils.JsonUtils;
+import online.qiqiang.forest.common.utils.codec.Md5Utils;
 import online.qiqiang.treasure.common.enums.CommandType;
 import online.qiqiang.treasure.common.model.CommandModel;
 import org.springframework.beans.factory.InitializingBean;
@@ -33,6 +34,7 @@ public class CommandProperties implements InitializingBean {
                 command.setOpen(true);
             }
         }
+        this.password = Md5Utils.md5(password);
         log.info("快捷命令配置[{}]", JsonUtils.write2String(this));
     }
 }

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import online.qiqiang.treasure.common.model.CommandModel;
 import online.qiqiang.treasure.common.vo.Response;
 import online.qiqiang.treasure.common.vo.request.ExecuteCommandRequestVO;
+import online.qiqiang.treasure.common.vo.response.ExecuteCommandResponseVO;
 import online.qiqiang.treasure.service.CommandService;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,7 @@ public class CommandController {
     }
 
     @PostMapping("/executeCommand")
-    public Response<List<String>> executeCommand(@RequestBody ExecuteCommandRequestVO requestVO) {
+    public Response<List<ExecuteCommandResponseVO>> executeCommand(@RequestBody ExecuteCommandRequestVO requestVO) {
         return new Response<>(commandService.execute(requestVO.getId(), requestVO.getPassword()));
     }
 }

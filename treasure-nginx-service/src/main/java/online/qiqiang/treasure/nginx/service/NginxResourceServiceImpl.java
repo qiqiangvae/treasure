@@ -58,7 +58,7 @@ public class NginxResourceServiceImpl implements ResourceService {
             resourceModel.setSize(file.length());
             resourceModel.setModifyTime(DateConvertor.localDateTimeFrom(file.lastModified()));
             resourceModel.setFileType(FileType.fileType(file));
-            String url = PathUtils.join(protocol + "://", serverName, location.getPath(), resourceModel.getName());
+            String url = PathUtils.join(protocol + "://", serverName, location.getPath(), path, resourceModel.getName());
             resourceModel.setAccessUrl(url);
             context.add(resourceModel);
         }

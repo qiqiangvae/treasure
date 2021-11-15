@@ -1,5 +1,7 @@
 package online.qiqiang.treasure.common.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
 
 /**
@@ -11,8 +13,16 @@ public class PathUtils {
     }
 
     public static String join(String... path) {
-        StringBuilder builder = new StringBuilder(path[0]);
+        StringBuilder builder;
+        if (StringUtils.isBlank(path[0])) {
+            builder = new StringBuilder();
+        } else {
+            builder = new StringBuilder(path[0]);
+        }
         for (int i = 1; i < path.length; i++) {
+            if (StringUtils.isBlank(path[i])) {
+                continue;
+            }
             if (path[i].equals("/")) {
                 continue;
             }
