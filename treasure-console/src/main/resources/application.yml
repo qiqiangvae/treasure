@@ -5,6 +5,12 @@ spring:
     name: treasure-console
   mvc:
     static-path-pattern: /front-web
+forest:
+  log:
+    enable: true
+    package-path: online.qiqiang.treasure.console.controller
+    ignore-resp: context
+    ignore-text: '#忽略该字段#'
 treasure:
   nginx:
     protocol: https
@@ -20,21 +26,18 @@ treasure:
       - id: 1
         command: ls -l
         work-dir: /data/hexo/blog
+        description: 列出文件
       - id: 2
-        command: hexo g
-        work-dir: /data/hexo/blog
-        open: false
-      - id: 3
         command: git pull
         work-dir: /data/hexo/blog
         open: false
+        description: 拉取 hexo 代码
+      - id: 3
+        command: hexo g
+        work-dir: /data/hexo/blog
+        open: false
+        description: 生成 hexo public 文件
       - id: 4
         command: 3,2
         type: pipeline
-        open: false
-forest:
-  log:
-    enable: true
-    package-path: online.qiqiang.treasure.console.controller
-    ignore-resp: context
-    ignore-text: '#忽略该字段#'
+        description: 一键发布最新 hexo

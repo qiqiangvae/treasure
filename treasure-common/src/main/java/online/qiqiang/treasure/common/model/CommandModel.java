@@ -22,4 +22,5 @@ public class CommandModel implements Serializable {
      * 默认公开
      */
     private Boolean open;
+    private String description;
 }
