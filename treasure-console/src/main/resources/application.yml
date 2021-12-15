@@ -41,3 +41,6 @@ treasure:
         command: 3,2
         type: pipeline
         description: 一键发布最新 hexo
+sa-token:
+  basic: qiqiang:123
+  is-log: true

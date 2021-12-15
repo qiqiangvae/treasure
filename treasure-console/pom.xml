@@ -28,8 +28,20 @@
             <groupId>online.qiqiang</groupId>
             <artifactId>treasure-command-service</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-spring-boot-starter</artifactId>
+        </dependency>
+        <!-- Sa-Token整合SpringAOP实现注解鉴权 -->
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-spring-aop</artifactId>
+            <version>1.28.0</version>
+        </dependency>
+
     </dependencies>
     <build>
+        <finalName>treasure-console</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
