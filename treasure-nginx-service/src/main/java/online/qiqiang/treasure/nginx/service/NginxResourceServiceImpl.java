@@ -10,7 +10,6 @@ import online.qiqiang.treasure.common.vo.request.ListResourceRequestVO;
 import online.qiqiang.treasure.nginx.core.NginxProperties;
 import online.qiqiang.treasure.service.ResourceService;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -46,7 +45,7 @@ public class NginxResourceServiceImpl implements ResourceService {
             return forestPage;
         }
         forestPage.setTotalSize((long) files.length);
-        List<ResourceModel> context = new ArrayList<>();
+        List<ResourceModel> content = new ArrayList<>();
         for (File file : files) {
             ResourceModel resourceModel = new ResourceModel();
             if (StringUtils.startsWith(file.getName(), ".")) {
@@ -62,10 +61,10 @@ public class NginxResourceServiceImpl implements ResourceService {
                 String url = PathUtils.join(protocol + "://", serverName, location.getPath(), path, resourceModel.getName());
                 resourceModel.setAccessUrl(url);
             }
-            context.add(resourceModel);
+            content.add(resourceModel);
         }
-        context = context.stream().sorted(Comparator.comparing(ResourceModel::getModifyTime)).collect(Collectors.toList());
-        forestPage.setContext(context);
+        content = content.stream().sorted(Comparator.comparing(ResourceModel::getModifyTime)).collect(Collectors.toList());
+        forestPage.setContent(content);
         return forestPage;
     }
 }
